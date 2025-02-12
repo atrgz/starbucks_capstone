@@ -33,3 +33,27 @@ You'll also want to take into account that some demographic groups will make pur
 ### Final Advice
 
 Because this is a capstone project, you are free to analyze the data any way you see fit. For example, you could build a machine learning model that predicts how much someone will spend based on demographics and offer type. Or you could build a model that predicts whether or not someone will respond to an offer. Or, you don't need to build a machine learning model at all. You could develop a set of heuristics that determine what offer you should send to each customer (i.e., 75 percent of women customers who were 35 years old responded to offer A vs 40 percent from the same demographic to offer B, so send offer A).
+
+
+
+
+
+# Starbucks Capstone Project
+
+## Table of contents
+- [Installations](#installations)
+- [Project Motivations](#project-motivations)
+- [Instructions](#instructions)
+- [File Descriptions](#file-descriptions)
+- [Licensing, Authors and Acknowledgments](#licensing-authors-and-acknowledgments)
+
+## Installations
+
+## Project Motivations
+
+## Instructions:
+
+## File Descriptions
+
+## Licensing, Authors and Acknowledgments
+This project has no specific license, but makes extensive use of the templates provided in the Udacity course.
