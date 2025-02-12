@@ -48,6 +48,13 @@ Because this is a capstone project, you are free to analyze the data any way you
 - [Licensing, Authors and Acknowledgments](#licensing-authors-and-acknowledgments)
 
 ## Installations
+pandas 2.2.3
+numpy 2.2.2
+matplotlib 3.10.0
+seaborn 0.13.2
+scikit-learn 1.6.1
+statsmodels 0.14.4
+Python 3.13.2
 
 ## Project Motivations
 
