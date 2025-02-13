@@ -1,66 +1,113 @@
-# starbucks_capstone
-
-Capstone project for the Data Scientist Nanodree (Udacity)
-
-# Starbucks Capstone Challenge
-
-### Introduction
-
-This data set contains simulated data that mimics customer behavior on the Starbucks rewards mobile app. Once every few days, Starbucks sends out an offer to users of the mobile app. An offer can be merely an advertisement for a drink or an actual offer such as a discount or BOGO (buy one get one free). Some users might not receive any offer during certain weeks.
-
-Not all users receive the same offer, and that is the challenge to solve with this data set.
-
-Your task is to combine transaction, demographic and offer data to determine which demographic groups respond best to which offer type. This data set is a simplified version of the real Starbucks app because the underlying simulator only has one product whereas Starbucks actually sells dozens of products.
-
-Every offer has a validity period before the offer expires. As an example, a BOGO offer might be valid for only 5 days. You'll see in the data set that informational offers have a validity period even though these ads are merely providing information about a product; for example, if an informational offer has 7 days of validity, you can assume the customer is feeling the influence of the offer for 7 days after receiving the advertisement.
-
-You'll be given transactional data showing user purchases made on the app including the timestamp of purchase and the amount of money spent on a purchase. This transactional data also has a record for each offer that a user receives as well as a record for when a user actually views the offer. There are also records for when a user completes an offer.
-
-Keep in mind as well that someone using the app might make a purchase through the app without having received an offer or seen an offer.
-
-### Example
-
-To give an example, a user could receive a discount offer buy 10 dollars get 2 off on Monday. The offer is valid for 10 days from receipt. If the customer accumulates at least 10 dollars in purchases during the validity period, the customer completes the offer.
-
-However, there are a few things to watch out for in this data set. Customers do not opt into the offers that they receive; in other words, a user can receive an offer, never actually view the offer, and still complete the offer. For example, a user might receive the "buy 10 dollars get 2 dollars off offer", but the user never opens the offer during the 10 day validity period. The customer spends 15 dollars during those ten days. There will be an offer completion record in the data set; however, the customer was not influenced by the offer because the customer never viewed the offer.
-
-### Cleaning
-
-This makes data cleaning especially important and tricky.
-
-You'll also want to take into account that some demographic groups will make purchases even if they don't receive an offer. From a business perspective, if a customer is going to make a 10 dollar purchase without an offer anyway, you wouldn't want to send a buy 10 dollars get 2 dollars off offer. You'll want to try to assess what a certain demographic group will buy when not receiving any offers.
-
-### Final Advice
-
-Because this is a capstone project, you are free to analyze the data any way you see fit. For example, you could build a machine learning model that predicts how much someone will spend based on demographics and offer type. Or you could build a model that predicts whether or not someone will respond to an offer. Or, you don't need to build a machine learning model at all. You could develop a set of heuristics that determine what offer you should send to each customer (i.e., 75 percent of women customers who were 35 years old responded to offer A vs 40 percent from the same demographic to offer B, so send offer A).
-
-
-
-
-
 # Starbucks Capstone Project
 
 ## Table of contents
+
 - [Installations](#installations)
 - [Project Motivations](#project-motivations)
-- [Instructions](#instructions)
 - [File Descriptions](#file-descriptions)
 - [Licensing, Authors and Acknowledgments](#licensing-authors-and-acknowledgments)
 
 ## Installations
-pandas 2.2.3
-numpy 2.2.2
-matplotlib 3.10.0
-seaborn 0.13.2
-scikit-learn 1.6.1
-statsmodels 0.14.4
-Python 3.13.2
+
+This project is written in Python 3.13.2 using the following libraries:
+
+- pandas 2.2.3
+- numpy 2.2.2
+- matplotlib 3.10.0
+- seaborn 0.13.2
+- scikit-learn 1.6.1
+- statsmodels 0.14.4
+- Python 3.13.2
 
 ## Project Motivations
 
-## Instructions:
+This is the capstone project for [Udacity's Data Scientist Nanodgree](https://www.udacity.com/course/data-scientist-nanodegree--nd025?promo=year_end&coupon=SAVE40&utm_source=gsem_brand&utm_source=gsem_brand&utm_medium=ads_r&utm_medium=ads_r&utm_campaign=19167921312_c_individuals&utm_campaign=19167921312_c_individuals&utm_term=143524475679&utm_term=143524475679&utm_keyword=udacity%20data%20science_e&utm_keyword=udacity%20data%20science_e&gad_source=1&gclid=EAIaIQobChMImKz0y_e0gwMVfj4GAB1FgAEHEAAYASAAEgI-h_D_BwE).
+
+This README file includes a brief summary of the project, for the full report on methodoly, findings and conclusions, please visit this [Medium Article](medium_link).
+
+### 1. Business motivations and data description
+
+Every few days Starbucks sends an offer to the users of its mobile app. There are three different types of offers:
+
+- Informational, with any reward linked to it
+- Discount, after spending certain amount of money, the user is entitled to a discount
+- BOGO (Buy One, Get One), if the user spends the amount of money specified by the offer, will get a coupon for the same amount
+
+Three sets of data are provided:
+
+- portfolio.json, describes each type of offer with a unique id and their characteristics (time, discount and difficulty)
+- profile.json, with all the users registered in the mobile app and some demographic traits of each
+- transcript.json, a log of all transactions linked to the app. This log records when a person receives, view and complete (spends the difficulty amount) an offer as well as all transactions made by a person.
+
+It's worth noticing that the records in these files are generated, not real data. But for the purpose of this project, that suffices.
+
+The goal of this project is to answer two questions:
+
+1. What type of offer affects each demographic profile?
+2. Is it possible to predict the amount of money spend by a person given an offer?
+
+### 2. Data Cleaning
+
+The key aspect of this project is to figure out the offers that drive transactions. To achieve this goal, the three datasets are cleaned and merged to find out which offers are active when a transaction is made. It's assumed that:
+
+- An offer received but not yet viewed in the moment of the transaction is not affecting the purchase
+- Transactions can be influenced by multiple offers at any given time
+- Offer completion don't affect transactions
+
+For the scope of this project, the channel used to convey the offers to users is not considered.
+
+### 3. Modelling:
+
+Two different models are used.
+
+First, to evaluate the influencing offers, Ordinary Least Squares (OLS) is used to do a regression of the active offers at any given time and how those offers explain the amount spent. Then each p-value is evaluated to check if that offer is statistically significant to the amount spent.
+
+Then, to answer the second question, a Machine Learning model is used to perform a Linnear Regression model and R-Square is used to evaluate the performance of the model in training a test sets.
+
+### 4. Summary of findings
+
+A set of significant offers is provided for each demographic group. Although some groups don't have any significant offer.
+
+Then a model to predict the amount spect is also provided, but the results of the R-square are not promising. (For test set 7.1% and for train set 6.8%).
 
 ## File Descriptions
 
+**Data folder**
+The three datasets are stored in this folder in JSON format
+
+**profile.json**
+Rewards program users (17000 users x 5 fields)
+
+- gender: (categorical) M, F, O, or null
+- age: (numeric) missing value encoded as 118
+- id: (string/hash)
+- became_member_on: (date) format YYYYMMDD
+- income: (numeric)
+
+**portfolio.json**
+Offers sent during 30-day test period (10 offers x 6 fields)
+
+- reward: (numeric) money awarded for the amount spent
+- channels: (list) web, email, mobile, social
+- difficulty: (numeric) money required to be spent to receive reward
+- duration: (numeric) time for offer to be open, in days
+- offer_type: (string) bogo, discount, informational
+- id: (string/hash)
+
+**transcript.json**
+Event log (306648 events x 4 fields)
+
+- person: (string/hash)
+- event: (string) offer received, offer viewed, transaction, offer completed
+- value: (dictionary) different values depending on event type
+- offer id: (string/hash) not associated with any "transaction"
+- amount: (numeric) money spent in "transaction"
+- reward: (numeric) money gained from "offer completed"
+- time: (numeric) hours after start of test
+
+**Starbucks_Capstone_notebook.ipynb**
+Jupyter notebook with calculations and visualizations needed for the analysis.
+
 ## Licensing, Authors and Acknowledgments
-This project has no specific license, but makes extensive use of the templates provided in the Udacity course.
+
+This project has no specific license, but makes extensive use of the templates, data and guidelines provided in the Udacity course.
