@@ -72,8 +72,9 @@ Then a model to predict the amount spect is also provided, but the results of th
 
 ## File Descriptions
 
-Data folder:
+**Data folder**
 The three datasets are stored in this folder in JSON format
+
 **profile.json**
 Rewards program users (17000 users x 5 fields)
 
@@ -103,6 +104,9 @@ Event log (306648 events x 4 fields)
 - amount: (numeric) money spent in "transaction"
 - reward: (numeric) money gained from "offer completed"
 - time: (numeric) hours after start of test
+
+**Starbucks_Capstone_notebook.ipynb**
+Jupyter notebook with calculations and visualizations needed for the analysis.
 
 ## Licensing, Authors and Acknowledgments
 
