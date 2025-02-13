@@ -23,7 +23,7 @@ This project is written in Python 3.13.2 using the following libraries:
 
 This is the capstone project for [Udacity's Data Scientist Nanodgree](https://www.udacity.com/course/data-scientist-nanodegree--nd025?promo=year_end&coupon=SAVE40&utm_source=gsem_brand&utm_source=gsem_brand&utm_medium=ads_r&utm_medium=ads_r&utm_campaign=19167921312_c_individuals&utm_campaign=19167921312_c_individuals&utm_term=143524475679&utm_term=143524475679&utm_keyword=udacity%20data%20science_e&utm_keyword=udacity%20data%20science_e&gad_source=1&gclid=EAIaIQobChMImKz0y_e0gwMVfj4GAB1FgAEHEAAYASAAEgI-h_D_BwE).
 
-This README file includes a brief summary of the project, for the full report on methodoly, findings and conclusions, please visit this [Medium Article](medium_link).
+This README file includes a brief summary of the project, for the full report on methodoly, findings and conclusions, please visit this [Medium Article](https://medium.com/@at_eshop/study-of-starbucks-offer-impact-in-mobile-app-users-54c01f68f480).
 
 ### 1. Business motivations and data description
 
